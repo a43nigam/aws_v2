@@ -4,8 +4,6 @@ Tests for AWS V2 utility functions.
 
 import pytest
 from aws_v2.utils import format_bytes, print_success, print_error, print_warning, print_info
-from io import StringIO
-import sys
 
 
 def test_format_bytes():
@@ -19,8 +17,8 @@ def test_format_bytes():
     assert format_bytes(1099511627776) == "1.00 TB"
 
 
-def test_print_functions_no_crash(capsys):
-    """Test that print functions don't crash."""
+def test_print_functions_output_messages(capsys):
+    """Test that print functions output messages correctly."""
     print_success("Success message")
     print_error("Error message")
     print_warning("Warning message")

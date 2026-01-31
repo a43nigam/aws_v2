@@ -35,7 +35,7 @@ def list_buckets():
             try:
                 location = s3.get_bucket_location(Bucket=bucket['Name'])
                 region = location['LocationConstraint'] or 'us-east-1'
-            except:
+            except ClientError:
                 region = 'N/A'
             
             buckets.append([
