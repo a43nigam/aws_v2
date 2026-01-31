@@ -31,11 +31,15 @@ class TestConfig:
         monkeypatch.setenv('AWS_DEFAULT_REGION', 'eu-west-1')
         monkeypatch.setenv('AWS_ACCESS_KEY_ID', 'test-key')
         monkeypatch.setenv('AWS_SECRET_ACCESS_KEY', 'test-secret')
+        monkeypatch.setenv('AWS_SESSION_TOKEN', 'test-token')
+        monkeypatch.setenv('AWS_PROFILE', 'test-profile')
         
         config = Config()
         assert config.region == 'eu-west-1'
         assert config.access_key_id == 'test-key'
         assert config.secret_access_key == 'test-secret'
+        assert config.session_token == 'test-token'
+        assert config.profile_name == 'test-profile'
     
     def test_boto3_config_conversion(self):
         """Test conversion to boto3 config format."""

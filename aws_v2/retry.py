@@ -45,7 +45,7 @@ def retry_with_backoff(
                             f"Failed after {max_retries} retries: {func.__name__}"
                         )
                         raise RetryException(
-                            f"Operation failed",
+                            f"Operation {func.__name__} failed",
                             attempts=max_retries,
                             last_error=e
                         )
@@ -59,7 +59,7 @@ def retry_with_backoff(
             
             # This should never be reached, but just in case
             raise RetryException(
-                f"Operation failed",
+                f"Operation {func.__name__} failed",
                 attempts=max_retries,
                 last_error=last_exception or Exception("Unknown error")
             )
